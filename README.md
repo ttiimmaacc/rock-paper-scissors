@@ -7,3 +7,5 @@
 - Callback functions & functions in functions
 - Default Arguments & Rest Operator
 - Built in functions like bind(), call() & apply()
+
+> Comment heavy full of notes & explanations
