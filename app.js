@@ -64,19 +64,29 @@ const getComputerChoice = () => {
 };
 //  generates computers choice
 
+// const getWinner = (cChoice, pChoice) => {
+//   if (cChoice === pChoice){
+//     return RESULT_DRAW;
+//   } else if (
+//     (cChoice === ROCK && pChoice === PAPER) ||
+//     (cChoice === PAPER && pChoice === SCISSORS) ||
+//     (cChoice === SCISSORS && pChoice === ROCK)
+//   ) {
+//     return RESULT_PLAYER_WINS;
+//   } else {
+//     return RESULT_COMPUTER_WINS;
+//   }
+// };
+// If statement block
+
 const getWinner = (cChoice, pChoice) => {
-  if (cChoice === pChoice){
-    return RESULT_DRAW;
-  } else if (
+    return cChoice === pChoice ? RESULT_DRAW :
     (cChoice === ROCK && pChoice === PAPER) ||
     (cChoice === PAPER && pChoice === SCISSORS) ||
-    (cChoice === SCISSORS && pChoice === ROCK)
-  ) {
-    return RESULT_PLAYER_WINS;
-  } else {
-    return RESULT_COMPUTER_WINS;
-  }
+    (cChoice === SCISSORS && pChoice === ROCK) ? RESULT_PLAYER_WINS : RESULT_COMPUTER_WINS
 };
+// Ternary Expression
+
 // compares user and computer choice then determines who wins
 // Operator precedence will evaluate the && expression
 
