@@ -5,9 +5,9 @@ const startGameBtn = document.getElementById('start-game-btn');
 // }
 // Standalone function statement
 
-const start = function() {
-  console.log('Game is starting...');
-};
+// const start = function() {
+//   console.log('Game is starting...');
+// };
 // Anonymous function expression
 // The function keyword can be used to define a function inside an expression. Stores a function inside a variable.
 
@@ -27,4 +27,8 @@ const start = function() {
 // a function, while having its own type is an Object
 // which would then make functions a Reference type and be stored in the heap
 
-startGameBtn.addEventListener('click', start);
+startGameBtn.addEventListener('click', function(){
+  console.log('Game is starting...');
+});
+// On the fly, Anonymous function - for use when you will never need to use the function inside of your code again.
+// function takes a function as an argument
