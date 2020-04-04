@@ -16,4 +16,6 @@ function startGame() {
 // person.greet();
 // call a function as a method
 
+console.dir(startGame);
+
 startGameBtn.addEventListener('click', startGame);
