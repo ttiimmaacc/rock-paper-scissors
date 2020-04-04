@@ -37,7 +37,7 @@ const RESULT_COMPUTER_WINS = 'COMPUTER_WINS';
 
 let gameIsRunning = false;
 
-const getPlayerChoice = function() {
+const getPlayerChoice = () => {
   const selection = prompt(`${ROCK},${PAPER}, or ${SCISSORS}?`, '').toUpperCase();
   // prompts for user input and then converts string to capital case
   if (
@@ -52,7 +52,7 @@ const getPlayerChoice = function() {
 };
 // if not equal to rock, and not equal to paper and not equal to scissors, alert user and return default value of rock or return user selection
 
-const getComputerChoice = function(){
+const getComputerChoice = () => {
   const randomValue = Math.random();
   if (randomValue < 0.34){
     return ROCK;
@@ -64,7 +64,7 @@ const getComputerChoice = function(){
 };
 //  generates computers choice
 
-const getWinner = function(cChoice, pChoice){
+const getWinner = (cChoice, pChoice) => {
   if (cChoice === pChoice){
     return RESULT_DRAW;
   } else if (
@@ -80,7 +80,7 @@ const getWinner = function(cChoice, pChoice){
 // compares user and computer choice then determines who wins
 // Operator precedence will evaluate the && expression
 
-startGameBtn.addEventListener('click', function(){
+startGameBtn.addEventListener('click', () => {
   if (gameIsRunning) {
     return;
   }
