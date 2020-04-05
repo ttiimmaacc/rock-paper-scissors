@@ -46,9 +46,11 @@ const getPlayerChoice = () => {
     selection !== SCISSORS
   ){
     alert(`Invalid choice! We chose ${ROCK} for you!`);
-    return DEFAULT_USER_CHOICE;
+    return;
+    // Returns Undefined if the user didnt choose anything & stops excution
   }
   return selection;
+  //Wont ex
 };
 // if not equal to rock, and not equal to paper and not equal to scissors, alert user and return default value of rock or return user selection
 
@@ -79,16 +81,21 @@ const getComputerChoice = () => {
 // };
 // If statement block
 
-const getWinner = (cChoice, pChoice) => {
-    return cChoice === pChoice ? RESULT_DRAW :
-    (cChoice === ROCK && pChoice === PAPER) ||
-    (cChoice === PAPER && pChoice === SCISSORS) ||
-    (cChoice === SCISSORS && pChoice === ROCK) ? RESULT_PLAYER_WINS : RESULT_COMPUTER_WINS
+const getWinner = (cChoice, pChoice = DEFAULT_USER_CHOICE ) => {
+    return cChoice === pChoice
+    ? RESULT_DRAW
+    :(cChoice === ROCK && pChoice === PAPER) ||
+     (cChoice === PAPER && pChoice === SCISSORS) ||
+     (cChoice === SCISSORS && pChoice === ROCK)
+    ? RESULT_PLAYER_WINS
+    : RESULT_COMPUTER_WINS;
 };
 // Ternary Expression
 
 // compares user and computer choice then determines who wins
 // Operator precedence will evaluate the && expression
+
+// Default Aruguments, Allow you to set a default value and call the function with only one arg.
 
 startGameBtn.addEventListener('click', () => {
   if (gameIsRunning) {
@@ -97,13 +104,20 @@ startGameBtn.addEventListener('click', () => {
   // check if game is running and stop starting ew game on click
   gameIsRunning = true;
   console.log('Game is starting...');
-  const playerSelection = getPlayerChoice();
+  const playerSelection = getPlayerChoice(); // might be Undefined
   // Calls variable function and stores value in a new local constaint of the anonymous function
   const computerChoice = getComputerChoice();
   // Stores computers choice in a local const
-  const winner = getWinner(computerChoice, playerSelection);
-  // Stores the determined winner into a local constaint
-  let message = `You picked ${playerSelection}, computer picked ${computerChoice}, therefore you `;
+  let winner;
+  if (playerSelection){
+    winner = getWinner(computerChoice, playerSelection);
+  } else {
+    winner = getWinner(computerChoice);
+    // passing value undefined or omitting the second arg value will then use the default value
+  }
+
+  let message = `You picked ${playerSelection || DEFAULT_USER_CHOICE }, computer picked ${computerChoice}, therefore you `;
+  // if playerSelection returns as truthy use value OR use DEFAULT_USER_CHOICE value, this will stop it returning undefined
   if (winner === RESULT_DRAW) {
     message = message + 'had a draw.';
   } else if (winner === RESULT_PLAYER_WINS){
