@@ -103,8 +103,16 @@ startGameBtn.addEventListener('click', () => {
   // Stores computers choice in a local const
   const winner = getWinner(computerChoice, playerSelection);
   // Stores the determined winner into a local constaint
-  console.log(winner);
-  // Logs winner to console obv
+  let message = `You picked ${playerSelection}, computer picked ${computerChoice}, therefore you `;
+  if (winner === RESULT_DRAW) {
+    message = message + 'had a draw.';
+  } else if (winner === RESULT_PLAYER_WINS){
+    message = message + 'won.';
+  } else {
+    message = message + 'lost.';
+  }
+  alert(message);
+  gameIsRunning = false;
 });
 // On the fly, Anonymous function - for use when you will never need to use the function inside of your code again.
 // function takes a function as an argument
